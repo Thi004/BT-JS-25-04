@@ -16,40 +16,42 @@ function findMin() {
             min = arrNum[i];
         }
     }
-    document.getElementById('min').innerHTML = ' Giá trị min là: ' + min;
+    document.getElementById('min').innerHTML = 'Giá trị min là: ' + min;
 }
 
 function find() {
-    let minchan = arrNum[0];
+    let minchan = 10000; // gán giá trị vô cùng lớn
     for (let i = 0; i < arrNum.length; i++) {
         if (arrNum[i] % 2 === 0 && minchan > arrNum[i]) {
             minchan = arrNum[i];
         }
     }
-    document.getElementById('minchan').innerHTML = ' Giá trị min của các phần tử chẵn là: ' + minChan;
+    document.getElementById('minchan').innerHTML = 'Giá trị min của các phần tử chẵn là: ' + minchan;
 }
 
 function findMax2() {
     let max = arrNum[0];
-    let max2 = null;
+
     for (let i = 0; i < arrNum.length; i++) {
-        if (max < arrNum[i]) {
-            max2 = max;
+        if (arrNum[i] > max) {
             max = arrNum[i];
-        } else if (arrNum[i] > max2 && arrNum[i] != max) {
+        }
+    }
+    let max2 = -1000;
+    for (let i = 0; i < arrNum.length; i++) {
+        if (arrNum[i] > max2 && arrNum[i] < max) {
             max2 = arrNum[i];
         }
     }
-    document.getElementById('max2').innerHTML = ' Giá trị max thứ 2 là: ' + max2;
+    document.getElementById('max2').innerHTML = 'Giá trị max thứ 2 là: ' + max2;
 }
 
 function kiemtra() {
-    let kq = "";
-    for (let i = 1; i < arrNum.length; i++) {
-        if (arrNum[i] < arrNum[i - 1]) {
-            kq = "Mảng không luôn tăng dần";
-        } else {
-            kq = "Mảng luôn tăng dần";
+    let kq = "Mảng luôn tăng";
+    for (let i = 0; i < arrNum.length-1; i++) {
+        if (arrNum[i] > arrNum[i + 1]) {
+            kq = "Mảng không luôn tăng";
+            break;
         }
     }
     document.getElementById('kt').innerHTML = kq;
